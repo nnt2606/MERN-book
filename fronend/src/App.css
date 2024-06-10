@@ -1,0 +1,21 @@
+.header{
+    padding-top: 12px;
+    background: #fff
+}
+.content:{
+    margin: 24px 16px;
+    padding: 20px;
+}
+
+.sider{
+    height: 100vh;
+    position: sticky !important;
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
+.logo{
+    color: #4f6f52;
+    margin: 30px;
+    font-size: 1.5rem;
+}

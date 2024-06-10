@@ -1,23 +1,28 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-const bookSchema = mongoose.Schema(
+const ObjectId = Schema.Types.ObjectId;
+const bookSchema = new mongoose.Schema(
     {
         title: {
             type: String,
             required: true,
         },
-        author: {
+        authors: {
+            type: [String],
+            required: true,
+        },
+        series: {
             type: String,
-            required: true,
+            required: false,
         },
-        publishYear: {
-            type: Number,
+        genre: {
+            type: [String],
             required: true,
-        },
+        }
     },
     {
-        timestamp: true,
+        timestamps: true
     }
 );
 
-export const Book = mongoose.model('Cat',bookSchema);
+export const Book = mongoose.model('Book', bookSchema);
