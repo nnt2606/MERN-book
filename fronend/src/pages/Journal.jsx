@@ -12,7 +12,7 @@ const Journal = () =>{
             <Breadcrumb items = {[
                 {
                     title: "Home",
-                    href: '/home'
+                    href: '/'
                 },
                 {
                     title: "Journal"

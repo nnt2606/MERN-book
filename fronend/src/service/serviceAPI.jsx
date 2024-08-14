@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../redux/axiosInstance";
 
 export const getBook = async()=>{
@@ -5,9 +6,19 @@ export const getBook = async()=>{
     return response;
 }
 
-export const getAllCopy = async() =>{
-    const response = await axiosInstance.post('/api/getAllCopy');
+export const getAllCopy = async(queryString,data) =>{
+    const response = await axiosInstance.post('/api/getAllCopy'+queryString, data);
     return response;
+}
+
+export const search = async(queryString, data)=>{
+    const response = await axiosInstance.post('/api/search'+queryString, data);
+    return response;
+}
+
+export const wasSell = async() =>{
+    const response = await axiosInstance.post('/api/wasSell');
+    return response
 }
 
 export const createBook = async(data) =>{
@@ -122,5 +133,40 @@ export const signupAdmin =  async(data)=>{
 
 export const getAllDiscount = async() =>{
     const response = await axiosInstance.post('/api/getAllDiscount');
+    return response;
+}
+
+export const getGenre = async () =>{
+    const response = await axiosInstance.post('/api/getGenres');
+    return response;
+}
+
+export const getRecommend = async(data) =>{
+    const response = await axiosInstance.post('/api/getRecommend',data);
+    return response;
+}
+
+export const createDiscount = async(data) =>{
+    const response = await axiosInstance.post('/api/createDiscount', data);
+    return response;
+}
+
+export const updateDiscount = async(data) =>{
+    const response = await axiosInstance.post('/api/updateDiscount', data);
+    return response;
+}
+
+export const deleteDiscount = async(data) =>{
+    const response = await axiosInstance.post('/api/deleteDiscount', data);
+    return response;
+}
+
+export const addDiscount = async(data) =>{
+    const response = await axiosInstance.post('/api/addDiscount', data);
+    return response;
+}
+
+export const getStatistic = async(data) =>{
+    const response = await axiosInstance.post('/api/getStatistic', data);
     return response;
 }

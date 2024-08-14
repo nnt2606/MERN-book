@@ -62,3 +62,17 @@ export const updateBook = async (req, res) =>{
         res.status(500).json({error: error.message});
     }
 };
+
+export const getAllGenres = async (req,res) =>{
+    try {
+        const books = await Book.find({}, 'genre'); // Truy vấn tất cả các sách và chỉ lấy trường genres
+        const allGenres = books
+          .flatMap(book => book.genre) // Trích xuất mảng genres từ mỗi sách và hợp nhất thành một mảng
+          .filter((value, index, self) => self.indexOf(value) === index); // Loại bỏ các thể loại trùng lặp
+          
+    
+        res.status(200).json(allGenres.sort())
+      } catch (error) {
+        res.status(500).json({error: error.message})
+      }
+}

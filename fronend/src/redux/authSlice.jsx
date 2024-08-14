@@ -32,8 +32,6 @@ const authSlice = createSlice({
             state.roles = {...action.payload.data.roles}
             state.isAdmin = Object.keys(action.payload.data.roles).length>=2?true:false
             state.isSuperadmin = Object.keys(action.payload.data.roles).length===3?true:false
-            console.log("SUPERADMIN: "+state.isSuperadmin);
-            console.log("ADMIN: "+state.isAdmin);
         })
         .addCase(logout.fulfilled, (state, action)=>{
             state.token = null,

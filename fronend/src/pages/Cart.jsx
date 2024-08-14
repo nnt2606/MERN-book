@@ -8,6 +8,8 @@ import { defaultImg } from "../assets";
 import { updateCart } from "../service/serviceAPI";
 import { deleteCartReducer } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
+import ButtonDesgin from "../designLayout/ButtonDesign";
+import { formatNumber } from "../const/utils";
 
 
 const Cart = () =>{
@@ -53,7 +55,7 @@ const Cart = () =>{
     }
 
     const data = cart.map((book, index)=>({
-        key: book._id,
+        key: book.copyId.bookId._id,
         copyId: book.copyId._id,
         bookcover: book.copyId.imgURL,
         title: book.copyId.bookId.title,
@@ -94,14 +96,14 @@ const Cart = () =>{
 
     const columns = [
         {
-            title: 'No',
+            title:<span className="text-orange font-semibold">No</span> ,
             dataIndex: 'number',
             key: 'number',
             align: 'center',
             render: (text, record, index) => index + 1,
         },
         {
-            title: "Book Cover",
+            title: <span className="text-orange font-semibold">Book Cover</span>,
             dataIndex: 'bookcover',
             key: 'bookcover',
             render: (_,record) =>{
@@ -110,7 +112,7 @@ const Cart = () =>{
                         <div>
                             <Image
                                 width={70}
-                                src={"htttp://localhost:5555/uploads/"+record.bookcover}
+                                src={record.bookcover}
                             />
                     </div>
                     )
@@ -128,17 +130,20 @@ const Cart = () =>{
             }
         },
         {
-            title: 'Title',
+            title: <span className="text-orange font-semibold">Title</span>,
             dataIndex: 'title',
             key: 'title',
+            render: (_, record)=>(
+                <div onClick={()=>navigate(`/book/${record.key}`, {state: {record}})} className=" cursor-pointer">{record.title}</div>
+            )
         },
         {
-            title: 'Authors',
+            title: <span className="text-orange font-semibold">Authors</span>,
             dataIndex: 'authors',
             key: 'authors'
         },
         {
-            title: "Quantity",
+            title: <span className="text-orange font-semibold">Quantity</span>,
             dataIndex: 'quantity',
             key: 'quantity',
             align: 'center',
@@ -152,25 +157,25 @@ const Cart = () =>{
             )
         },
         {
-            title: 'Price',
+            title: <span className="text-orange font-semibold">Price</span>,
             dataIndex: 'price',
             key: 'price',
             align: 'center',
             render: (_, record) => (
                 <div>
                 { record.discount && (Object.keys(record.discount).length === 0? (
-                    <span>{record.price}</span>
+                    <span>{formatNumber(record.price)}</span> 
                 ):(
                     record.discount.status ? (
                             <span>
                                 {record.price*(100-record.discount.discountNumber)/100}
-                                <span className=" text-sm line-through ml-2 text-gray-400">{record.price}</span>
+                                <span className=" text-sm line-through ml-2 text-gray-400">{formatNumber(record.price)}</span>
                                 <span className="ml-2 inline-flex items-center px-3 py-1 rounded-full bg-green-600 text-white">
-                                    -{record.discount.discountNumber}%
+                                    -{formatNumber(record.discount.discountNumber)}%
                                 </span>
                             </span>
                         ):(
-                            <span>{record.price}</span>
+                            <span>{formatNumber(record.price)}</span>
                         )
                     
                 ))}
@@ -178,7 +183,7 @@ const Cart = () =>{
             )
         },
         {
-            title: 'Action',
+            title:<span className="text-orange font-semibold">Action</span>,
             key: 'action',
             align: 'center',
             render: (_, record) =>(
@@ -198,12 +203,7 @@ const Cart = () =>{
     ]
 
     return(
-        <div className="max-w-container mx-auto px-4 pl-10 pr-10">
-            <div className="w-full py-10 xl:py-10 flex flex-col gap-3">
-                <h1 className="text-5xl text-primeColor font-titleFont font-bold">
-                    Cart
-                </h1>
-            </div>
+        <div className="max-w-container mx-auto p-5">
 
             <div className="pr-5 pl-5">
                 {cart.length > 0?(
@@ -221,37 +221,37 @@ const Cart = () =>{
                                 <p className="flex items-center justify-between text-sm ">
                                     Subtotal
                                     <span className="tracking-wide ">
-                                        {subtotal}$
+                                        {formatNumber(subtotal)}đ
                                     </span>
                                 </p>
                                 <p className="flex items-center justify-between text-sm">
                                     Save
                                     <span className="tracking-wide text-gray-400">
-                                        -{save}$
+                                        -{formatNumber(save)}đ
                                     </span>
                                 </p>
                                 <p className="flex items-center justify-between text-sm">
                                     Shipping charge
                                     <span className="tracking-wide">
-                                        {30000}$
+                                        {formatNumber(30000)}đ
                                     </span>
                                 </p>
                                 <hr />
                                 <p className="flex items-center justify-between text-lg font-semibold">
                                     Total
                                     <span className="tracking-wide text-lg">
-                                        {subtotal-save+30000}$
+                                        {formatNumber(subtotal-save+30000)}đ
                                     </span>
                                 </p>
                             </div>
                         </div>
 
-                        <div className="flex justify-end">
-                            <Button onClick={handleConfirmCart}
-                            className="w-52 h-10 bg-black text-white hover:bg-black duration-300"
+                        <div className="flex justify-end">      
+                            <button onClick={handleConfirmCart}
+                            className="w-52 h-10 bg-grayColor text-black hover:bg-black hover:text-grayColor border-orange rounded border-[2px] duration-300"
                             >
                                 Next
-                            </Button>
+                            </button>
                         </div>
                     </div>
                 ):(

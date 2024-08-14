@@ -84,12 +84,14 @@ const userSchema = new mongoose.Schema(
     }
 )
 
-userSchema.statics.signup = async function(name, email, password, roles) {
+userSchema.statics.signup = async function({name, email, password, roles}) {
+    console.log(email + " "+password);
     if(!email || !password){
         throw Error('All field must be filled')
     }
 
     const exists = await this.findOne({email});
+    console.log(exists);
     if(exists) {
         throw Error('Email already in use')
     }

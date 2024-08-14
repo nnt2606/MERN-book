@@ -52,9 +52,9 @@ const LayoutUser = () =>{
         theme="colored"  />
       <HeaderMain/>
       <HeaderBottom/>
-      {/* <SpecialCase/> */}
+      <SpecialCase/>
       <Outlet/>
-      {/* <Footer/> */}
+      <Footer/>
       <FooterBottom/>
     </div>
   )
@@ -88,7 +88,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<LayoutUser/>}>
-        <Route path="home" index element={<Home/>}></Route>
+        <Route index element={<Home/>}></Route>
         <Route path="about" element={<About/>}></Route>
         <Route path='shop' element={<Shop/>}></Route>
         <Route path="contact" element={<Contact/>}></Route>

@@ -8,38 +8,39 @@ import {
     coverbook2,
     coverbook3
 } from "../../assets";
-import Image from "../../designLayout/Image";
+import {Image} from "antd";
+import ButtonDesgin from "../../designLayout/ButtonDesign";
 
 const slides = [
     {
       imgSrc: banner,
-      text: "Lorem ipsum dolor sit amet",
+      text: "Hiroshige. One Hundred Famous Views of Edo",
       Subtext:
-        "Sed do eiusmod tempor incididunt ut labortation ullamco labori",
+        "One of the masterpieces of the ukiyo-e woodblock printing tradition and a paradigm of the Japonisme that inspired Impressionist, Post-Impressionist and Art Nouveau artists, from Vincent van Gogh to James McNeill Whistler",
       buttonLink: "/shop",
       buttonText: "Shop Now",
     },
     {
-      imgSrc: coverbook1,
-      text: "Lorem ipsum dolor sit amet",
+      imgSrc: coverbook2,
+      text: "Redouté. Roses",
       Subtext:
-        "Sed do eiusmod tempor incididunt ut labortation ullamco labori",
+        "Flower painter and botanist Pierre-Joseph Redouté was an unparalleled master of botanical illustrations and engravings. His most celebrated work Les Roses was published in three volumes between 1817 and 1824. This edition displays his remarkable talent for capturing nature's elusive beauty with vibrancy and accuracy",
       buttonLink: "/shop",
       buttonText: "Shop Now",
     },
     {
-        imgSrc: coverbook2,
-        text: "Lorem ipsum dolor sit amet",
+        imgSrc: coverbook1,
+        text: "Ellen von Unwerth. Heimat",
         Subtext:
-          "Sed do eiusmod tempor incididunt ut labortation ullamco labori",
+          "A place of alpine forests. Emerald lakes. And beautiful, snow-dusted peaks. A land where cowbells tinkle in meadows. Where days pass at a more natural pace. And where village girls Hilda, Traudel, Heidi and their friends enjoy a quiet life of country pursuits. Join their idyllic adventure. Set foot on a journey of joy.",
         buttonLink: "/shop",
         buttonText: "Shop Now",
       },
       {
         imgSrc: coverbook3,
-        text: "Lorem ipsum dolor sit amet",
+        text: "Industrial Design A–Z",
         Subtext:
-          "Sed do eiusmod tempor incididunt ut labortation ullamco labori",
+          "From cameras to kitchenware, Lego to Lamborghini, follow the makers and shapers of industrial design in Industrial Design A–Z. This revised and updated edition covers the individual designers, the global businesses, and above all the genius products that have synthesized form and function to transform our daily lives.",
         buttonLink: "/shop",
         buttonText: "Shop Now",
       },
@@ -49,46 +50,52 @@ const slides = [
     <div
       style={{
         position: "relative",
-        backgroundColor: "#F5F5F3", // Gray background color
+        backgroundColor: "#F5F5F5",
         display: "flex",
         justifyContent: "center",
         alignItems: "center", // Center vertically
+        maxHeight: "500px",
       }}
+      className="fixed px-5"
     >
-      <div
-        style={{
-          maxWidth: "450px", // Adjust the maxWidth as needed
-          marginRight: "100px", // Add margin between text/button and image
-        }}
-      >
+      <div>
         <h1
           style={{
-            marginBottom: "15px",
+            maxWidth: "475px", // Adjust the maxWidth as needed
+            maxHeight: "175px",
             fontSize: "2.5rem", // Adjust the font size as needed
-            color: "#000", // Black color
-            fontWeight: "700",
+            color: "black", // Black color
+            fontWeight: "600",
+            WebkitTextStroke: '1px black',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.6)', // Text shadow
           }}
         >
           {text}
         </h1>
         <p
           style={{
-            marginBottom: "25px",
-            fontSize: "1.5rem", // Adjust the font size as needed
-            color: "#666", // Gray color
+            maxWidth: "475px", // Adjust the maxWidth as needed
+            maxHeight: "81px",
+            marginTop: "10px",
+            marginBottom: "60px",
+            fontSize: "1.0rem", // Adjust the font size as needed
+            color: "black",
           }}
+          className="line-clamp-7"
         >
           {Subtext}
         </p>
   
         <Link to={buttonLink}>
-          <button className="bg-black text-white text-lg font-bodyFont w-[185px] h-[50px] hover:bg-black duration-300 font-bold">
-            {buttonText}
-          </button>
+          <ButtonDesgin buttonText={buttonText}/>
         </Link>
       </div>
-      <div style={{ marginLeft: "100px" }}>
-        <Image imgSrc={imgSrc} />
+      <div style={{ 
+        marginLeft: "100px",
+        }}
+        className="w-full h-auto max-w-xs"
+        >
+        <img src={imgSrc} />
       </div>
     </div>
   );

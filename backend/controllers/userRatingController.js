@@ -61,10 +61,7 @@ export const getRatingByBook = async(req, res) =>{
         const countRating = await BookRating.findOne({bookId: bookId});
         // console.log(countRating);
         const totalReview = countRating.reviews;
-        const mediumRate = (countRating.stars1+countRating.stars2*2+countRating.stars3*3+countRating.stars4*4+countRating.stars5*5)/countRating.reviews;
-        console.log(mediumRate);
-        console.log(totalReview);
-        console.log(ratings)
+        const mediumRate = (countRating.stars1+countRating.stars2*2+countRating.stars3*3+countRating.stars4*4+countRating.stars5*5)/(countRating.stars1+countRating.stars2+countRating.stars3+countRating.stars4+countRating.stars5);
         res.status(200).json({mediumRate,totalReview ,ratings});
     }catch(error){
         res.status(500).json({message: error.message});

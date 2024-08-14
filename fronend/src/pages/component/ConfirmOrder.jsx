@@ -25,7 +25,7 @@ const columns = [
                     <div>
                         <Image
                             width={70}
-                            src={"htttp://localhost:5555/uploads/"+record.bookcover}
+                            src={record.bookcover}
                         />
                 </div>
                 )
@@ -162,7 +162,7 @@ const ConfirmOrder = () =>{
                     title = "Order successful!"
                     subtitle = "Continue shopping"
                     extra = {[
-                        <Link to="/home">
+                        <Link to="/">
                         <Button type= "primary" key="home">
                             Home
                         </Button>

@@ -7,6 +7,7 @@ import {
     getOrderByAdmin, 
     getOrderByUser, 
     getOrderDetails,
+    getStatistic,
     updateOrderDeliveryByAdmin
 } from '../controllers/orderController.js';
 import { verifyRoles } from '../middleware/verifyRoles.js';
@@ -25,5 +26,6 @@ router.post('/finishOrder',verifyRoles(ROLE_LIST.USER, ROLE_LIST.SUPERADMIN), fi
 
 router.post('/deliveryUpdate', verifyRoles(ROLE_LIST.ADMIN, ROLE_LIST.SUPERADMIN), updateOrderDeliveryByAdmin);
 router.post('/acceptCancel', verifyRoles(ROLE_LIST.ADMIN, ROLE_LIST.SUPERADMIN), deleteOrderByAdmin);
+router.post('/getStatistic', verifyRoles(ROLE_LIST.ADMIN, ROLE_LIST.SUPERADMIN), getStatistic);
 
 export default router;

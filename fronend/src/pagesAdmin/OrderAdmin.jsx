@@ -2,6 +2,7 @@ import { Table, Select, Modal, Button, Tag, Card, Descriptions, Image, Flex } fr
 import { useState, useEffect } from "react";
 import { cancelOrderAdmin, getOrderByAdmin, updateDeliveryOrder } from "../service/serviceAPI";
 import { defaultImg } from "../assets";
+import { formatNumber, formatUtcDate } from "../const/utils";
 
 const columnsDetail = [
     {
@@ -21,7 +22,7 @@ const columnsDetail = [
                     <div>
                         <Image
                             width={70}
-                            src={"htttp://localhost:5555/uploads/"+record.bookcover}
+                            src={record.bookcover}
                         />
                 </div>
                 )
@@ -62,18 +63,18 @@ const columnsDetail = [
         render: (_, record) => (
             <div>
             { record.discount && (Object.keys(record.discount).length === 0? (
-                <span>{record.price}</span>
+                <span>{formatNumber(record.price)}</span>
             ):(
                 record.discount.status ? (
                         <span>
                             {record.price*(100-record.discount.discountNumber)/100}
-                            <span className=" text-sm line-through ml-2 text-gray-400">{record.price}</span>
+                            <span className=" text-sm line-through ml-2 text-gray-400">{formatNumber(record.price)}</span>
                             <span className="ml-2 inline-flex items-center px-3 py-1 rounded-full bg-green-600 text-white">
-                                -{record.discount.discountNumber}%
+                                -{formatNumber(record.discount.discountNumber)}%
                             </span>
                         </span>
                     ):(
-                        <span>{record.price}</span>
+                        <span>{formatNumber(record.price)}</span>
                     )
                 
             ))}
@@ -117,7 +118,7 @@ const OrderAdmin = () =>{
     const fetchData = async()=>{
         const response = await getOrderByAdmin();
         if(response.status === 200){
-            setOrder(response.data);
+            setOrder(response.data.order);
         }
     }
 
@@ -136,6 +137,8 @@ const OrderAdmin = () =>{
         subtotal: item.subtotal,
         userNote: item.userNote,
         available: item.available,
+        createdAt: item.createdAt,
+        updatedAt: item.updatedAt
     }))
 
     const dataDetails = cart.map((book, index)=>({
@@ -147,7 +150,7 @@ const OrderAdmin = () =>{
         quantity: book.quantity,
         price: book.copyId.price,
         discount: {...book.copyId.discount},
-        inStock: book.copyId.inStock
+        inStock: book.copyId.inStock,
     }))
 
     const changeColor = (status) =>{
@@ -191,7 +194,10 @@ const OrderAdmin = () =>{
             title: 'Total',
             dataIndex: 'total',
             key: 'total',
-            align: 'center'
+            align: 'center',
+            render: (_, record) =>(
+                <div>{formatNumber(record.total)}</div>
+            )
         },
         {
             title: 'Status',
@@ -254,6 +260,10 @@ const OrderAdmin = () =>{
                         // style={{ fontSize: '16px', padding: '8px 12px' }}
                         >{orderDetails.status}</Tag>
                         </Flex>
+                    </div>
+                    <div className="pt-5">
+                        <div>Created at: {formatUtcDate(orderDetails.createdAt)}</div>
+                        <div>Updated at: {formatUtcDate(orderDetails.updatedAt)}</div>
                     </div>
                     <div className="pb-10 pt-5">
                         <Descriptions title="Address Information">

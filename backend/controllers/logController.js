@@ -1,9 +1,25 @@
-import Log from "../models/logModel";
+import Log from "../models/logModel.js";
 
 export const viewAllLog = async(req, res) =>{
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const startIndex = (page - 1) * limit;
     try {
-        const log = await Log.find();
-        res.status(200).json(log);
+        const log = await Log.find().skip(startIndex).limit(limit)
+        .populate('user')
+        .populate('related.Book')
+        .populate('related.Copy')
+        .populate('related.Order')
+        .populate('related.Rating')
+        .populate('related.Discount')
+        .sort({createdAt: -1})
+        .exec();
+        const totalItems = await Log.countDocuments();
+        res.status(200).json({
+          log,
+          totalPages: Math.ceil(totalItems/limit),
+          currentPage: page,
+        });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching logs for user' });
     }

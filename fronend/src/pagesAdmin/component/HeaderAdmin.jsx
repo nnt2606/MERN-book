@@ -26,7 +26,7 @@ const HeaderAdmin = () =>{
         {
             key: '1',
             label: (
-                <Link to="/home">
+                <Link to="/">
                     Web for user
                 </Link>
             )

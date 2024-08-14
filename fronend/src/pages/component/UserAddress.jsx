@@ -30,13 +30,7 @@ const UserAdress = () =>{
     }
 
     return(
-        <div className='pl-10 pr-10'>
-            <div className="w-full py-10 xl:py-10 flex flex-col gap-3">
-                <h1 className="text-5xl text-primeColor font-titleFont font-bold">
-                    Change Address
-                </h1>
-            </div>
-
+        <div className='px-10 py-5'>
             <div className="pb-10">
                     <Descriptions title="Address Information">
                         <Descriptions.Item label="Name">{currentAddress.name}</Descriptions.Item>
@@ -49,6 +43,7 @@ const UserAdress = () =>{
                 </div>
 
             <div>
+                <div className='text-xl font-semibold'>Change address</div>
             <Form
                     name="basic"
                     labelCol={{span: 8,}}

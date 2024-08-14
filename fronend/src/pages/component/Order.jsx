@@ -2,6 +2,7 @@ import { Empty, Table, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { getOrderByUser } from "../../service/serviceAPI";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { formatNumber } from "../../const/utils";
 
 const columns = [
     {
@@ -33,7 +34,10 @@ const columns = [
         title: 'Total',
         dataIndex: 'total',
         key: 'total',
-        align: 'center'
+        align: 'center',
+        render: (_, record) =>(
+            <div>{formatNumber(record.total)}</div>
+        )
     },
     {
         title: 'Status',
@@ -82,7 +86,7 @@ const Order = () =>{
     }))
 
     return(
-        <div className="pl-10 pr-10">
+        <div className="px-10">
             <div className="w-full py-10 xl:py-10 flex flex-col gap-3">
                 <h1 className="text-5xl text-primeColor font-titleFont font-bold">
                     Order

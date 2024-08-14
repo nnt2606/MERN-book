@@ -9,7 +9,7 @@ const accessToken = (_id, role) =>{
             roles: role,
         }}, 
         ACCESS_TOKEN_SECRET, 
-        {expiresIn: '5h'});
+        {expiresIn: '2h'});
 }
 
 const refreshToken = (_id, role) =>{
@@ -24,9 +24,10 @@ const refreshToken = (_id, role) =>{
 }
 
 export const signupUser = async(req, res) =>{
-    const{name, email, password} = req.body;
+    const{name, email, password, roles} = req.body;
+    console.log(email + " "+password);
     try{
-        const user = await User.signup({name, email, password, roles: []});
+        const user = await User.signup({name, email, password, roles});
 
         res.sendStatus(200);
     }catch(error){
@@ -37,8 +38,9 @@ export const signupUser = async(req, res) =>{
 
 export const signupAdmin = async(req, res) =>{
     const{name, email, password, roles} = req.body;
+    console.log(name+" "+email+" "+password);
     try{
-        const user = await User.signup(name, email, password, roles);
+        const user = await User.signup({name, email, password, roles});
 
         const adminList = await User.find({
             $or: [
@@ -79,7 +81,7 @@ export const handleRefreshTokenUser =  async(req, res) => {
     try{
         const cookie = req.cookies;
         if(!cookie?.jwt){
-            return res.sendStatus(401);
+            return res.sendStatus(403);
         }
         const refreshToken = cookie.jwt;
 

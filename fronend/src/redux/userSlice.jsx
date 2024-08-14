@@ -11,9 +11,6 @@ export const addCart = createAsyncThunk('/api/addCart', async(data, thunkAPI)=>{
     return response.data;
 })
 
-
-
-
 const userSlice = createSlice({
     name: 'user',
     initialState: {

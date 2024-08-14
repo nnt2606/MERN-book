@@ -42,9 +42,9 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <HiOutlineDocumentText />
     },
     // {
-    //     key: 'message',
-    //     label: 'Message',
-    //     path: '/admin/message',
+    //     key: 'log',
+    //     label: 'Log',
+    //     path: '/admin/log',
     //     icon: <HiOutlineAnnotation />
     // }
 ]
@@ -68,11 +68,11 @@ export const NAVBAR = [
     {
       key: 'home',
       label: "Home",
-      path: "/home",
+      path: "/",
     },
     {
       key: 'shop',
-      label: "Shop",
+      label: "All books",
       path: "/shop",
     },
     {
@@ -85,9 +85,4 @@ export const NAVBAR = [
       label: "Contact",
       path: "/contact",
     },
-    {
-      key: 'journal',
-      label: "Journal",
-      path: "/journal",
-    }
   ]

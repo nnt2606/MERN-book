@@ -1,0 +1,60 @@
+"filename", "language", "JavaScript", "Markdown", "JavaScript JSX", "PostCSS", "XML", "JSON", "HTML", "comment", "blank", "total"
+"d:\20232\BookStoreProject - MERN\fronend\.eslintrc.cjs", "JavaScript", 21, 0, 0, 0, 0, 0, 0, 0, 1, 22
+"d:\20232\BookStoreProject - MERN\fronend\README.md", "Markdown", 0, 5, 0, 0, 0, 0, 0, 0, 4, 9
+"d:\20232\BookStoreProject - MERN\fronend\index.html", "HTML", 0, 0, 0, 0, 0, 0, 24, 0, 1, 25
+"d:\20232\BookStoreProject - MERN\fronend\package-lock.json", "JSON", 0, 0, 0, 0, 0, 7616, 0, 0, 1, 7617
+"d:\20232\BookStoreProject - MERN\fronend\package.json", "JSON", 0, 0, 0, 0, 0, 51, 0, 0, 1, 52
+"d:\20232\BookStoreProject - MERN\fronend\postcss.config.js", "JavaScript", 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"d:\20232\BookStoreProject - MERN\fronend\public\vite.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"d:\20232\BookStoreProject - MERN\fronend\src\App.css", "PostCSS", 0, 0, 0, 15, 0, 0, 0, 0, 1, 16
+"d:\20232\BookStoreProject - MERN\fronend\src\App.jsx", "JavaScript JSX", 0, 0, 131, 0, 0, 0, 0, 0, 13, 144
+"d:\20232\BookStoreProject - MERN\fronend\src\assets\index.jsx", "JavaScript JSX", 0, 0, 18, 0, 0, 0, 0, 0, 1, 19
+"d:\20232\BookStoreProject - MERN\fronend\src\assets\react.svg", "XML", 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"d:\20232\BookStoreProject - MERN\fronend\src\auth\Login.jsx", "JavaScript JSX", 0, 0, 200, 0, 0, 0, 0, 2, 23, 225
+"d:\20232\BookStoreProject - MERN\fronend\src\auth\Register.jsx", "JavaScript JSX", 0, 0, 247, 0, 0, 0, 0, 1, 21, 269
+"d:\20232\BookStoreProject - MERN\fronend\src\const\Navigation.jsx", "JavaScript JSX", 0, 0, 78, 0, 0, 0, 0, 6, 4, 88
+"d:\20232\BookStoreProject - MERN\fronend\src\const\utils.jsx", "JavaScript JSX", 0, 0, 27, 0, 0, 0, 0, 5, 10, 42
+"d:\20232\BookStoreProject - MERN\fronend\src\designLayout\ButtonDesign.jsx", "JavaScript JSX", 0, 0, 11, 0, 0, 0, 0, 0, 2, 13
+"d:\20232\BookStoreProject - MERN\fronend\src\index.css", "PostCSS", 0, 0, 0, 14, 0, 0, 0, 0, 6, 20
+"d:\20232\BookStoreProject - MERN\fronend\src\main.jsx", "JavaScript JSX", 0, 0, 19, 0, 0, 0, 0, 1, 4, 24
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\AdminHome.jsx", "JavaScript JSX", 0, 0, 53, 0, 0, 0, 0, 0, 5, 58
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\DiscountAdmin.jsx", "JavaScript JSX", 0, 0, 279, 0, 0, 0, 0, 2, 28, 309
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\ManageAdmin.jsx", "JavaScript JSX", 0, 0, 265, 0, 0, 0, 0, 7, 20, 292
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\OrderAdmin.jsx", "JavaScript JSX", 0, 0, 279, 0, 0, 0, 0, 0, 14, 293
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\ProductComponent.jsx", "JavaScript JSX", 0, 0, 565, 0, 0, 0, 0, 3, 40, 608
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\component\BookForm.jsx", "JavaScript JSX", 0, 0, 49, 0, 0, 0, 0, 0, 6, 55
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\component\HeaderAdmin.jsx", "JavaScript JSX", 0, 0, 62, 0, 0, 0, 0, 0, 7, 69
+"d:\20232\BookStoreProject - MERN\fronend\src\pagesAdmin\component\SiderAdmin.jsx", "JavaScript JSX", 0, 0, 41, 0, 0, 0, 0, 0, 4, 45
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\About.jsx", "JavaScript JSX", 0, 0, 46, 0, 0, 0, 0, 0, 9, 55
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\Cart.jsx", "JavaScript JSX", 0, 0, 261, 0, 0, 0, 0, 1, 21, 283
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\Contact.jsx", "JavaScript JSX", 0, 0, 45, 0, 0, 0, 0, 0, 8, 53
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\Home.jsx", "JavaScript JSX", 0, 0, 13, 0, 0, 0, 0, 0, 2, 15
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\Journal.jsx", "JavaScript JSX", 0, 0, 36, 0, 0, 0, 0, 0, 2, 38
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\ProductDetails.jsx", "JavaScript JSX", 0, 0, 243, 0, 0, 0, 0, 4, 30, 277
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\Shop.jsx", "JavaScript JSX", 0, 0, 177, 0, 0, 0, 0, 0, 26, 203
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\Banner.jsx", "JavaScript JSX", 0, 0, 120, 0, 0, 0, 0, 0, 6, 126
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\ConfirmOrder.jsx", "JavaScript JSX", 0, 0, 237, 0, 0, 0, 0, 0, 21, 258
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\Footer.jsx", "JavaScript JSX", 0, 0, 162, 0, 0, 0, 0, 9, 7, 178
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\FooterBottom.jsx", "JavaScript JSX", 0, 0, 24, 0, 0, 0, 0, 0, 3, 27
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\HeaderBottom.jsx", "JavaScript JSX", 0, 0, 104, 0, 0, 0, 0, 47, 8, 159
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\HeaderMain.jsx", "JavaScript JSX", 0, 0, 102, 0, 0, 0, 0, 0, 10, 112
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\Order.jsx", "JavaScript JSX", 0, 0, 128, 0, 0, 0, 0, 0, 1, 129
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\OrderDetail.jsx", "JavaScript JSX", 0, 0, 202, 0, 0, 0, 0, 0, 17, 219
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\Product.jsx", "JavaScript JSX", 0, 0, 29, 0, 0, 0, 0, 0, 3, 32
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\ProductCard.jsx", "JavaScript JSX", 0, 0, 83, 0, 0, 0, 0, 0, 10, 93
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\Sales.jsx", "JavaScript JSX", 0, 0, 96, 0, 0, 0, 0, 0, 12, 108
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\SpecialCase.jsx", "JavaScript JSX", 0, 0, 96, 0, 0, 0, 0, 1, 9, 106
+"d:\20232\BookStoreProject - MERN\fronend\src\pages\component\UserAddress.jsx", "JavaScript JSX", 0, 0, 169, 0, 0, 0, 0, 1, 16, 186
+"d:\20232\BookStoreProject - MERN\fronend\src\redux\authSlice.jsx", "JavaScript JSX", 0, 0, 49, 0, 0, 0, 0, 2, 6, 57
+"d:\20232\BookStoreProject - MERN\fronend\src\redux\axiosInstance.jsx", "JavaScript JSX", 0, 0, 58, 0, 0, 0, 0, 0, 15, 73
+"d:\20232\BookStoreProject - MERN\fronend\src\redux\store.jsx", "JavaScript JSX", 0, 0, 24, 0, 0, 0, 0, 0, 6, 30
+"d:\20232\BookStoreProject - MERN\fronend\src\redux\userSlice.jsx", "JavaScript JSX", 0, 0, 50, 0, 0, 0, 0, 0, 4, 54
+"d:\20232\BookStoreProject - MERN\fronend\src\service\ProtectedRoute.jsx", "JavaScript JSX", 0, 0, 18, 0, 0, 0, 0, 0, 6, 24
+"d:\20232\BookStoreProject - MERN\fronend\src\service\authService.jsx", "JavaScript JSX", 0, 0, 13, 0, 0, 0, 0, 3, 5, 21
+"d:\20232\BookStoreProject - MERN\fronend\src\service\rating.jsx", "JavaScript JSX", 0, 0, 9, 0, 0, 0, 0, 0, 2, 11
+"d:\20232\BookStoreProject - MERN\fronend\src\service\serviceAPI.jsx", "JavaScript JSX", 0, 0, 130, 0, 0, 0, 0, 0, 32, 162
+"d:\20232\BookStoreProject - MERN\fronend\src\utils\authUtils.jsx", "JavaScript JSX", 0, 0, 19, 0, 0, 0, 0, 0, 6, 25
+"d:\20232\BookStoreProject - MERN\fronend\src\utils\navigateHeader.jsx", "JavaScript JSX", 0, 0, 7, 0, 0, 0, 0, 0, 4, 11
+"d:\20232\BookStoreProject - MERN\fronend\tailwind.config.js", "JavaScript", 17, 0, 0, 0, 0, 0, 0, 1, 2, 20
+"d:\20232\BookStoreProject - MERN\fronend\vite.config.js", "JavaScript", 5, 0, 0, 0, 0, 0, 0, 1, 2, 8
+"Total", "-", 49, 5, 5074, 29, 2, 7667, 24, 97, 529, 13476

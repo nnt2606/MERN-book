@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import {Rate, Button, Empty, Input, Row, Col, Image, Descriptions} from 'antd';
+import {Rate, Button, Empty, Input, Row, Col, Image, Descriptions, Divider} from 'antd';
 import { createNewRating, getRatingByBookId } from "../service/rating";
 import { defaultImg } from "../assets";
-import { getCopy } from "../service/serviceAPI";
+import { getCopy, getRecommend } from "../service/serviceAPI";
+import { capitalizeFirstLetter, formatNumber } from "../const/utils";
 import { addCart } from "../redux/userSlice";
+import ProductShow from "./component/ProductCard";
+import axiosInstance from "../redux/axiosInstance";
 
 const { TextArea } = Input;
 
@@ -25,30 +28,52 @@ const ProductDetail = () =>{
     const {userId, name} = useSelector((state)=> state.user);
     const id = useParams();
 
-    useEffect(()=>{
-        const fetch = async () => {
+    const [dataRec, setDataRec] = useState([]);
+    const [copyId, setCopyId] = useState();
 
-            const res = await getCopy({bookId: id});
-            if(res.data!== null){
-                setCopy({...res.data})
-            }
-            console.log(copy);
-            
-            const response =  await getRatingByBookId({bookId: id._id});
-            // console.log(response.data);
-            if(response.data !== null) {
-                setMediumRate(response.data.mediumRate);
-                setTotalReview(response.data.totalReview);
-                setRatingdetails(response.data.ratings);
-            } 
-            
-            const check = response.data.ratings.some((rating) => rating.userId._id === userId);
-            setCheckComment(!check);
+
+    const onRowClick = (record) =>{
+        navigate(`/book/${record.key}`, {state: {record}});
+    }
+
+    const fetchRecommend = async () => {
+        const response = await getRecommend(JSON.stringify({_id: copyId}))
+        if(response.status ===200){
+            setDataRec(response.data);
         }
-        fetch();
-    }, []);
+    }
 
-    const handleAddToCart = () =>{
+    const fetchDataRating = async () =>{
+        const response =  await getRatingByBookId({bookId: id._id});
+        // console.log(response.data);
+        if(response.data !== null) {
+            setMediumRate(response.data.mediumRate);
+            setTotalReview(response.data.totalReview);
+            setRatingdetails(response.data.ratings);
+        } 
+        
+        const check = response.data.ratings.some((rating) => rating.userId._id === userId);
+        setCheckComment(!check);
+    }
+
+    const fetchData = async () => {
+        const res = await getCopy({bookId: id});
+        if(res.data!== null){
+            setCopy({...res.data})
+            const response = await getRecommend(JSON.stringify({_id: res.data._id}))
+            if(response.status ===200){
+                setDataRec(response.data);
+            }
+        }
+    }
+
+    useEffect(()=>{
+        fetchData();
+        fetchDataRating();
+        fetchRecommend();
+    }, [id]);
+
+    const handleAddToCart = async () =>{
         dispatch(addCart({copyId: copy._id, quantity: 1}))
     }
 
@@ -63,15 +88,25 @@ const ProductDetail = () =>{
         }
     }
 
+    const dataRectMap = dataRec.map((book, index)=>({
+        key: book.bookId._id,
+        title: book.bookId.title,
+        img: book.imgURL,
+        authors: book.bookId.authors.join(', '),
+        price: book.price,
+        sold: book.sold,
+        inStock: book.inStock
+    }))
+
     return(<div className="pl-10 pr-10">
     {copy && copy.bookId ? (
         
         <div className="flex flex-col gap-5 pl-3 pr-3 pb-5">
             <Row gutter={[16, 16]}>
-                <Col span={12} className="flex items-center justify-center pt-10" xs={24} md={12} sm={24}>
+                <Col span={12} className="flex items-center justify-center py-10" xs={24} md={12} sm={24}>
                     { typeof copy.imgURL !== "undefined" ?(
                         <Image
-                        src={"htttp://localhost:5555/uploads/"+copy.imgURL}
+                        src={copy.imgURL}
                         />
                     ):(
                         <Image
@@ -87,47 +122,67 @@ const ProductDetail = () =>{
                     </div>
                     <div className="text-2xl font-semibold pt-3 pb-3">
                         {/* {console.log(copy)} */}
-                        <span>
+                        <span className="text-red-600">
                         {typeof copy.discount === 'undefined' ? (
-                            <span>{copy.price}</span>
+                            <span>
+                                {formatNumber(copy.price)}
+                                <span className="text-sm ml-[4px]">đ</span>
+                            </span>
+                            
                         ):(
                             copy.discount.status ? (
                                 <span>
-                                    {copy.price*(100-copy.discount.discountNumber)/100}
-                                    <span className="text-xl font-semibold line-through ml-2">{copy.price}</span>
+                                    {formatNumber(copy.price*(100-copy.discount.discountNumber)/100)}
+                                    <span className="text-xl font-semibold line-through ml-2">{formatNumber(copy.price)}</span>
                                     <span className="text-xs ml-2 inline-flex items-center px-3 py-1 rounded-full bg-green-600 text-white">
-                                        -{copy.discount.discountNumber}%
+                                        -{formatNumber(copy.discount.discountNumber)}%
                                     </span>
                                 </span>
                             ):(
-                                <span>{copy.price}</span>
+                                <span>{formatNumber(copy.price)}</span>
                             )
                         )}
                         </span>
                     </div>
                     <hr/>
 
-                    <p className="text-base text-gray-600 pt-2">
-                        <span>
-                        Phasellus egestas nulla vel odio condimentum venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin ac orci laoreet, molestie sem nec, malesuada odio. Praesent dignissim vel nulla vel mollis. Nam vestibulum mi ligula, eget ornare elit aliquam in. Sed et orci leo. Suspendisse eu lectus sodales, ultrices quam a, feugiat libero.
-                        </span>
-                        <p className="text-sm mr-2 text-black font-semibold pt-5">Genres: {copy.bookId.genre.join(', ')}</p>
+                    <p className="text-base text-gray-600 pt-2 "
+                    style={{
+                        height:"200px",
+                        overflow: "auto"
+                    }}
+                    >
+                        {copy.description}
                     </p>
+                    
+                    
 
-                    <span className="flex items-center">
-                        <p className="text-sm font-semibold mr-2"> Total Rating: {mediumRate===null?"0":mediumRate}/5</p>
-                        <p className="text-gray-600">({totalReview})</p>
-                    </span>
+                    <div className="lg:absolute bottom-[90px]">
+                    <hr/>
+                        <div className="text-sm mr-2 text-black py-3">
+                                <span className="font-semibold"> Genres:</span>
+                                <span> {copy.bookId.genre.map(capitalizeFirstLetter).join(', ')}</span>
+                        </div>
 
-                    {copy.inStock===0 ?(
-                        <p className="text-base font-medium" style={{color:"red"}}> Out of Stock</p>
-                    ):(
-                        <p className="text-base font-medium" style={{color:"green"}}> Available</p>
-                    )}
+                        <div className="flex items-center">
+                            <span className="text-sm font-semibold mr-2"> Total Rating:</span>
+                            <span className="mr-2"> {mediumRate===null?"0":mediumRate.toFixed(2)}/5 </span>
+                            <span className="text-gray-600">({totalReview})</span>
+                        </div>
+                    </div>
+
+                    <div className="text-base font-medium lg:absolute bottom-[60px]">
+                        {copy.inStock===0 ?(
+                            <p style={{color:"red"}}> Out of Stock</p>
+                        ):(
+                            <p  style={{color:"green"}}> Available</p>
+                        )}
+                    </div>
+
                     <Button
-                    disabled={copy.inStock===0?true:false}
+                    disabled={copy.inStock===0 ? true : false}
                     onClick = {handleAddToCart}
-                    className=" bg-black text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md  duration-300 mt-auto"
+                    className=" bg-grayColor text-black border-[2px] border-orange rounded-md cursor-pointer w-full text-base font-semibold h-10  duration-300 mt-auto lg:absolute bottom-0"
                     >
                         Add to cart
                     </Button>
@@ -135,7 +190,7 @@ const ProductDetail = () =>{
             </Row>
 
             <hr/>
-            <div>
+            <div className="px-1">
                 <Descriptions title="Information">
                     <Descriptions.Item label="ISBN">{typeof copy.ISBN!=="undefined" ? copy.ISBN: "No data"}</Descriptions.Item>
                     <Descriptions.Item label="Pages">{typeof copy.pages!=="undefined" ? copy.pages: "No data"}</Descriptions.Item>
@@ -146,8 +201,18 @@ const ProductDetail = () =>{
                 </Descriptions>
             </div>
 
+            <div>
+                <Divider><div className="text-lg font-semibold text-black border-orange bg-white rounded border-[2px] px-2">Recommendation</div></Divider>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4">
+                        {dataRectMap.map(item => (
+                            <ProductShow key={item.key} data={item} onClick={onRowClick}/>
+                        ))}
+                    </div>
+                <Divider/>
+            </div>
+
             {  userId &&( checkComment ? (
-            <div className="pl-5 pr-5">
+            <div>
                 <p className="font-medium pb-2 pt-2 pl-4">Review this book</p>
                 <div className=" border rounded-md pl-5 bg-white border-gray-700">
                     <p className="text-black text-l font-semibold pt-3">{name}</p>
@@ -201,7 +266,6 @@ const ProductDetail = () =>{
                 )
             }
             </div>
-
         </div>
     ):(
         <Empty />

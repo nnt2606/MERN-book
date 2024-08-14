@@ -61,7 +61,7 @@ const Register = () => {
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-1/2 hidden lg:inline-flex h-full text-white bg-black p-4">
         <div className="w-[450px] h-full bg-black px-10 flex flex-col gap-6 justify-center">
-          <Link to="/home">
+          <Link to="/">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <IoBook size={50} className="h-8"/> 
             <span className=" self-center text-2xl font-semibold whitespace-nowrap">BookStore</span>
@@ -113,7 +113,7 @@ const Register = () => {
             </p>
           </div>
           <div className="flex items-center justify-between mt-10">
-            <Link to="/home">
+            <Link to="/">
               <p className="text-sm font-titleFont font-semibold text-gray-300 hover:text-white cursor-pointer duration-300">
                 © BOOKSTORE
               </p>

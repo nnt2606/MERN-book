@@ -7,6 +7,7 @@ import userRoute from '../routes/userRoute.js';
 import orderRoute from '../routes/orderRoute.js';
 import ratingRoute from '../routes/userRatingRoute.js';
 import discountBookRoute from '../routes/discountBookRoute.js';
+import recommendRoute from '../routes/recommendRoute.js';
 import { requiredAuth } from "./verifyJWT.js";
 import cookieParser from 'cookie-parser';
 const allowedOrigins = [
@@ -45,6 +46,7 @@ export default function(app) {
 
     app.use('/auth', authRoute);
 
+    app.use('/api', recommendRoute);
     app.use('/api', bookRoute);
     app.use('/api', copyRoute);
     app.use('/api', ratingRoute)

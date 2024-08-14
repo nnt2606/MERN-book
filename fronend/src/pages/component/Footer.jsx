@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaFacebook, FaYoutube, FaLinkedin, FaGithub } from "react-icons/fa";
 import { paymentCard } from "../../assets";
-import Image from "../../designLayout/Image";
+import {Image} from "antd";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [emailInfo, setEmailInfo] = useState("");
@@ -29,7 +30,12 @@ const Footer = () => {
     <div className="w-full bg-[#F5F5F3] py-20">
       <div className="max-w-container mx-auto grid grid-cols-1 md:grid-cols-2  xl:grid-cols-6 px-4 gap-10">
         <div className="col-span-2">
-        <h3 className="text-xl font-bodyFont font-semibold mb-6">More about BookStore</h3>
+          <h3 className="text-xl font-bodyFont font-semibold mb-6">
+            More about
+            <Link to="/">
+            <span className="mx-2 text-orange font-bold">bookish bliss</span>
+            </Link>
+          </h3>
           <div className="flex flex-col gap-6">
             <p className="text-base w-full xl:w-[80%]">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim sint
@@ -76,12 +82,14 @@ const Footer = () => {
           </div>
         </div>
         <div>
-        <h3 className="text-xl font-bodyFont font-semibold mb-6">Book</h3>
+        <h3 className="text-xl font-bodyFont font-semibold mb-6">Books</h3>
           <ul className="flex flex-col gap-2">
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-              New Arrivals
-            </li>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+            <Link to="/shop">
+              <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+                All books
+              </li>
+            </Link>
+            {/* <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
               Best sellers
             </li>
             <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
@@ -89,27 +97,28 @@ const Footer = () => {
             </li>
             <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
               Rating
-            </li>
+            </li> */}
           </ul>
         </div>
         <div>
-        <h3 className="text-xl font-bodyFont font-semibold mb-6">Your account</h3>
+        <h3 className="text-xl font-bodyFont font-semibold mb-6">Account</h3>
           <ul className="flex flex-col gap-2">
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-              Profile
-            </li>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-              Orders
-            </li>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-              Addresses
-            </li>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-              Account Details
-            </li>
-            <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
-              Payment Options
-            </li>
+            <Link to="/address">
+              <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+                Your address
+              </li>
+            </Link>
+            <Link to="/order">
+              <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+                Your orders
+              </li>
+            </Link>
+            <Link to="/cart">
+              <li className="font-titleFont text-base text-lightText hover:text-black hover:underline decoration-[1px] decoration-gray-500 underline-offset-2 cursor-pointer duration-300">
+                Your cart
+              </li>
+            </Link>
+           
           </ul>
         </div>
         <div className="col-span-2 flex flex-col items-center w-full px-4">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {Breadcrumb} from 'antd'; 
+import {Breadcrumb, Row, Col} from 'antd'; 
 
 const About = () => {
   const location = useLocation();
@@ -13,7 +13,7 @@ const About = () => {
             <Breadcrumb items = {[
                 {
                     title: "Home",
-                    href: '/home'
+                    href: '/'
                 },
                 {
                     title: "About"
@@ -21,17 +21,32 @@ const About = () => {
             ]}
             />
         </div>
-      <div className="pb-10">
-        <h1 className="max-w-[600px] text-base text-lightText mb-2">
-          <span className="text-primeColor font-semibold text-lg">BookStore</span>{" "}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </h1>
-        <Link to="/shop">
-          <button className="w-52 h-10 bg-black text-white hover:bg-black duration-300">
-            Continue Shopping
-          </button>
-        </Link>
-      </div>
+        <div className="pb-10 lg:pl-6">
+                <h1 className="max-w-[600px] text-base text-lightText mb-2">
+                    <span className="font-semibold text-lg">BookStore</span>{" "}
+                    <span className="text-lg text-orange font-semibold">bookish bliss</span>{" "}
+                </h1>
+
+                <Row gutter={[16, 16]}>
+                    
+                    <Col span={12} xs={24} md={24} sm={24} lg={12}>
+                    <div className=" text-[18px] px-5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </div>
+                    
+                    </Col>
+                    <Col span={12} xs={24} md={24} sm={24} lg={12}>
+                        <div className="px-10">
+                        <img src="https://career.gpo.vn/uploads/images/truong-hoc/logo-hust.png"
+                            style={{ maxWidth: "200px"}}
+                        />
+                        </div>
+                    </Col>
+               
+                </Row>
+                
+    
+            </div>
     </div>
   );
 };
