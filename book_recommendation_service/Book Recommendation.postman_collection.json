@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "06dba802-6ab0-4492-9502-7684f03db589",
+		"name": "Book Recommendation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22087125"
+	},
+	"item": [
+		{
+			"name": "New arrival",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8004/rec_new?limit=5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8004",
+					"path": [
+						"rec_new"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bestsellers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8004/rec_bestsellers?limit=5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8004",
+					"path": [
+						"rec_bestsellers"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "By genre",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"genre\": \"fiction\",\r\n    \"limit\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8004/rec_genre",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8004",
+					"path": [
+						"rec_genre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Genre cosine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"666844cce726f6d8988f38bb\",\r\n    \"limit\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8004/rec_genre_cosine",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8004",
+					"path": [
+						"rec_genre_cosine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Embedding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"666844cce726f6d8988f38bb\",\r\n    \"limit\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8004/rec_book_cosine",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8004",
+					"path": [
+						"rec_book_cosine"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
